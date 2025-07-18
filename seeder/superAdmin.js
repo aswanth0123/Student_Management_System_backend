@@ -12,7 +12,7 @@ const seedSuperAdmin = async () => {
     let superAdminRole = await Role.findOne({ name: 'Super Admin' });
     if (!superAdminRole) {
       superAdminRole = await Role.create({
-        name: 'Super Admin',
+        name: 'Super_Admin',
         description: 'Full access to all modules',
       });
       console.log('Created Super Admin role');

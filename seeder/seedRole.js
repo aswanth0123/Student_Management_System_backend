@@ -1,7 +1,7 @@
-const mongoose = require('mongoose');
-const dotenv = require('dotenv');
-const Role = require('../models/role');
-const connectDB = require('../config/db');
+import mongoose from 'mongoose';
+import dotenv from 'dotenv';
+import Role from '../models/role.js';
+import {connectDB} from '../config/db.js';
 
 dotenv.config();
 connectDB();
@@ -10,7 +10,7 @@ const seedRoles = async () => {
   try {
     const roles = [
       {
-        name: 'Super Admin',
+        name: 'Super_Admin',
         description: 'Full access to all modules',
         defaultPermissions: {
           canCreate: true,

@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import bcrypt from 'bcryptjs'
+import Role from "./role.js";
 
 const userSchema = new mongoose.Schema({
   name: { type: String, required: true, trim: true },
@@ -8,7 +9,6 @@ const userSchema = new mongoose.Schema({
   role: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Role',
-    required: true
   },
   isActive: { type: Boolean, default: true }
 }, {
