@@ -1,8 +1,10 @@
-import mongoose from "mongoose";
 import dotenv from 'dotenv'
 import { connectDB } from "../config/db.js";
 import Role from "../models/role.js";
 import User from "../models/user.js";
+import Student from "../models/student.js"; // Added Student model import
+import Course from "../models/course.js"; // Added Course model import
+
 dotenv.config();
 connectDB();
 

@@ -45,6 +45,7 @@ export const loginUser = async (req, res) => {
         email: user.email,
         role: user.role.name,
         role_id: user.role._id,
+        role_description: user.role.description
       },
     });
   } catch (error) {
@@ -65,5 +66,30 @@ export const getCurrentUser = async (req, res) => {
   }
   console.log(user);
 
-  res.status(200).json({ user });
+  // Transform the user object to match the expected format
+  const transformedUser = {
+    id: user._id,
+    name: user.name,
+    email: user.email,
+    role: user.role.name, // Extract role name as string
+    role_id: user.role._id,
+    role_description: user.role.description
+  };
+
+  res.status(200).json({ user: transformedUser });
+};
+
+export const logoutUser = async (req, res) => {
+  try {
+    res.clearCookie('token', {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "strict",
+    });
+    
+    res.status(200).json({ message: "Logged out successfully" });
+  } catch (error) {
+    console.error('Logout error:', error);
+    res.status(500).json({ message: "Logout failed" });
+  }
 };
